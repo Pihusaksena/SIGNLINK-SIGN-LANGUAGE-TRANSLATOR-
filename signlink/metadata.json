@@ -1,0 +1,6 @@
+{
+  "name": "Sign Language Translator",
+  "description": "An interactive full-stack sign language translator using real-time Computer Vision, hand tracking, and advanced translation helpers.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

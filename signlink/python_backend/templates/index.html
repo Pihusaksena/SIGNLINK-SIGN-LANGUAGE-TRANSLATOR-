@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Translator Interface</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <header class="app-header">
+            <div class="logo-wrapper">
+                <div class="logo-icon">▲</div>
+                <div>
+                    <h1>Sign Language Translator</h1>
+                    <p class="tagline">B.TechCSE Final Year Submission • Real-Time AI Computer Vision</p>
+                </div>
+            </div>
+            <div class="status-pill green">
+                <span class="active-dot"></span> Local Server Online
+            </div>
+        </header>
+
+        <main class="grid-dashboard">
+            <!-- Left Panel: Webcam Stream -->
+            <section className="card webcam-panel">
+                <div class="panel-header">
+                    <h2>Live Camera Analysis Feed</h2>
+                    <span class="badge">OpenCV Thread</span>
+                </div>
+                <div class="video-stage">
+                    <img id="video-feed" src="/video_feed" alt="Webcam Feed Loading...">
+                </div>
+                <div class="technical-row">
+                    <div class="stat-box">
+                        <span class="stat-label">Frame Rate</span>
+                        <span class="stat-val">30 FPS</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Model Class</span>
+                        <span class="stat-val">Dense DNN</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Latency</span>
+                        <span class="stat-val">&lt;150ms</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Recognition Core -->
+            <section class="card control-panel">
+                <div class="panel-header">
+                    <h2>Translation Core &amp; Vocal Engine</h2>
+                    <span class="badge pulse">Real-Time Sync</span>
+                </div>
+
+                <!-- Live Classified Sign -->
+                <div class="recognized-box">
+                    <div class="meta">Captured Hand Gesture</div>
+                    <div id="gesture-name" class="gesture-display">Awaiting input...</div>
+                    <div class="progress-bar-container">
+                        <div id="gesture-confidence-bar" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="confidence-text">Confidence: <span id="gesture-confidence">0.0</span>%</div>
+                </div>
+
+                <!-- Sentence Display -->
+                <div class="sentence-box">
+                    <div class="meta">Ongoing Sentence Slate</div>
+                    <div id="sentence-output" class="sentence-display">No words captured yet.</div>
+                    <div class="slate-ctrl">
+                        <button id="btn-backspace" class="btn outline small">⬅ Delete Word</button>
+                        <button id="btn-clear" class="btn outline small danger">✖ Clear Slate</button>
+                    </div>
+                </div>
+
+                <!-- Volcal Synthesis Controls -->
+                <div class="settings-box">
+                    <div class="meta font-mono">SPEECH_VOICE_SYNTH_CONFIG</div>
+                    <div class="sliders-row">
+                        <div class="slider-group">
+                            <label>Synthesizer Vocal Rate</label>
+                            <input type="range" id="rate-slider" min="100" max="250" value="160" class="input-range">
+                        </div>
+                        <div class="slider-group">
+                            <label>Gender Profile</label>
+                            <select id="voice-gender" class="input-select">
+                                <option value="female">Female Voice</option>
+                                <option value="male">Male Voice</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="actions-row">
+                        <button id="btn-append" class="btn primary flex-1">➕ Append Word</button>
+                        <button id="btn-speak" class="btn flex-1">🔊 Voice Sentence</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>Interactive Computer Vision and Deep Learning translation playground. Created for final demonstration portfolio.</p>
+        </footer>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
